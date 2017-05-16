@@ -1,0 +1,27 @@
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Calendar App
+    // CSS
+    // load bootstrap and our own personal stylesheet
+    link(href='/stylesheets/bootstrap.css', rel='stylesheet')
+    link(rel='stylesheet', href='css/style.css')
+  body
+    .container.navbar
+      .jumbotron
+        h1 Welcome To the Calendar Application
+        ul
+          li.navbar-link
+            a(href='/') Home
+          li.navbar-link
+            a(href='/register') Sign Up
+          li.navbar-link
+            a(href='/login') Log in
+          li.navbar-link
+            a(href='') Log out
+      .container
+        p
+          |View the months and days in any year of your choice. Start 
+          a(href ='/register') here. 
+        h2
+          |Register to add events to your calendar

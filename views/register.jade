@@ -1,0 +1,41 @@
+h1 #{title}
+p Sign up using the form below
+.container
+  form(action='register/send', method='post')
+    .form-group
+    | First name:
+    br
+    input.form-control(type='text', name='firstname', placeholder='Enter first name' required)
+    br
+    br
+    .form-group
+    |   Last name:
+    br
+    input.form-control(type='text', name='lastname', placeholder='Enter last name' required)
+    br
+    br
+    .form-group
+    |   Email:
+    br
+    input.form-control(type='text', name='email', placeholder='Enter email' required)
+    br
+    br
+    .form-group
+    |   Username:
+    br
+    input.form-control(type='text', name='username', placeholder='Enter username' required)
+    br
+    br
+    .form-group
+    |   Password:
+    br
+    input.form-control(type='password', name='password', placeholder='Enter password' required)
+    br
+    br
+    .form-group
+    |   Confirm password:
+    br
+    input.form-control(type='text', name='password2', placeholder='Re-enter password' required)
+    br
+    br
+    input.form-control(type='submit', value='Sign Up')
