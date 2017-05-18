@@ -8,20 +8,21 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     .container.navbar
-      .jumbotron
-        h1 Welcome To the Calendar Application
+      .nav-list
         ul
-          li.navbar-link
+          li
             a(href='/') Home
-          li.navbar-link
+          li
             a(href='/register') Sign Up
-          li.navbar-link
+          li
             a(href='/login') Log in
-          li.navbar-link
+          li
             a(href='') Log out
+      h1 Welcome To the Calendar Application
       .container
         p
           |View the months and days in any year of your choice. Start 
-          a(href ='/register') here. 
+          a(href ='/years') here.
+          a(href ='/days') or here. 
         h2
           |Register to add events to your calendar

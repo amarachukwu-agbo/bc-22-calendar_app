@@ -28,6 +28,7 @@
     "express": "^4.15.2",
     "express-session": "^1.15.2",
     "firebase": "^3.9.0",
+    "html": "^1.0.0",
     "jade": "^1.11.0",
     "mongodb": "^2.2.26",
     "mongoose": "^4.9.9",
