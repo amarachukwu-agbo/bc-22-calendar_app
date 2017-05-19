@@ -6,7 +6,7 @@ html
     script(type='text/javascript', src='/javascripts/cal.js')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    div
+    div.float
       table.tg
         tr
           th.tg-hjji(colspan='10') YEARS
@@ -155,9 +155,45 @@ html
           td.tg-yw4l
         tr
           td.tg-yw4l
+    div.float
+      table.tg
+        tr
+          th.tg-hjji(colspan='3') Months
+        tr
+          td#jan.tg-yw4l Jan
+          td#feb.tg-yw4l Feb
+          td#mar.tg-yw4l Mar
+        tr
+          td#apr.tg-yw4l Apr
+          td#may.tg-yw4l May
+          td#jun.tg-yw4l Jun
+        tr
+          td#jul.tg-yw4l Jul
+          td#aug.tg-yw4l Aug
+          td#sep.tg-yw4l Sep
+        tr
+          td#oct.tg-yw4l Oct
+          td#nov.tg-yw4l Nov
+          td#dec.tg-yw4l Dec
+    div.float
+      form
+        p Select Month
+        select.input#month
+          option(value='0') January
+          option(value='1') February
+          option(value='2') March
+          option(value='3') April
+          option(value='4') May
+          option(value='5') June
+          option(value='6') July
+          option(value='7') August
+          option(value='8') September
+          option(value='9') October
+          option(value='10') November
+          option(value='11') December
       form
         p Select Year
-        select#year
+        select.input#year
           option(value='1970') 1970
           option(value='1971') 1971
           option(value='1972') 1972
@@ -289,40 +325,5 @@ html
           option(value='2098') 2098
           option(value='2099') 2099
           option(value='2100') 2100
-    #months
-      table.tg
-        tr
-          th.tg-hjji(colspan='3') Months
-        tr
-          td#jan.tg-yw4l Jan
-          td#feb.tg-yw4l Feb
-          td#mar.tg-yw4l Mar
-        tr
-          td#apr.tg-yw4l Apr
-          td#may.tg-yw4l May
-          td#jun.tg-yw4l Jun
-        tr
-          td#jul.tg-yw4l Jul
-          td#aug.tg-yw4l Aug
-          td#sep.tg-yw4l Sep
-        tr
-          td#oct.tg-yw4l Oct
-          td#nov.tg-yw4l Nov
-          td#dec.tg-yw4l Dec
-      form
-        p Select Month
-        select#month
-          option(value='0') January
-          option(value='1') February
-          option(value='2') March
-          option(value='3') April
-          option(value='4') May
-          option(value='5') June
-          option(value='6') July
-          option(value='7') August
-          option(value='8') September
-          option(value='9') October
-          option(value='10') November
-          option(value='11') December
-    div
+
       input#myBtn(type='submit', value='Show Calendar')

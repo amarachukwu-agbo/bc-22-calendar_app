@@ -19,34 +19,28 @@ function Calendar(month, year) {
   this.prevMonth = function(){
     if (this.month === 0){
       this.year-=1;
-      this.month=11;
-      cal = new Calendar(11,this.year);
-      cal.generateHTML();
-      //document.write(outPut);
+      this.month = 11;
+      var cal = new Calendar(11,this.year);
+      document.write(cal.generateHTML());
     }else{
       this.month-=1;
-      cal = new Calendar(this.month,this.year);
-      cal.generateHTML();
-      //document.write(outPut);
+      var cal = new Calendar(this.month,this.year);
+      document.write(cal.generateHTML());
     }
   }
   this.nextMonth = function(){
     if (this.month === 11){
       this.year+=1;
-      this.month = 0;
-      cal = new Calendar(0,this.year);
+      this.year = 0;
+      var cal = new Calendar(0,this.year);
       cal.generateHTML();
-      //document.write(outPut);
+      document.write(cal.generateHTML());
     }else{
       this.month+=1;
-      cal = new Calendar(this.month,this.year);
+      var cal = new Calendar(this.month,this.year);
       cal.generateHTML();
-      outPut = cal.generateHTML();
-      //document.write(outPut);
+      document.write(cal.generateHTML());
     }
-  }
-  this.display = function(){
-    document.write(outPut);
   }
 
 }
@@ -69,13 +63,13 @@ Calendar.prototype.generateHTML = function(){
   
   // do the header
   var monthName = cal_months_labels[this.month];
-  var html = '<table class="calendar-table">';
-  html += '<tr><th colspan="7">';
+  var html = '<table class="tg">';
+  html += '<tr><th class = "tg-hjji" colspan="7">';
   html +=  '<button onClick = "cal.prevMonth()">&#10094;</button>' + "&nbsp;" + monthName+ "&nbsp;" +this.year + "&nbsp;" + '<button onClick = "cal.nextMonth()">&#10095;</button>';
   html += '</th></tr>';
-  html += '<tr class="calendar-header">';
+  html += '<tr>';
   for(var i = 0; i <= 6; i++ ){
-    html += '<td class="calendar-header-day">';
+    html += '<td class="tg-yw4l">';
     html += cal_days_labels[i];
     html += '</td>';
   }
@@ -87,7 +81,7 @@ Calendar.prototype.generateHTML = function(){
   for (var i = 0; i < 9; i++) {
     // this loop is for weekdays (cells)
     for (var j = 0; j <= 6; j++) { 
-      html += '<td class="calendar-day">';
+      html += '<td class="tg-hjji">';
       if (day <= monthLength && (i > 0 || j >= startingDay)) {
         html += day;
         day++;
@@ -105,6 +99,7 @@ Calendar.prototype.generateHTML = function(){
 
   this.html = html;
   outPut = this.html;
+  return outPut;
 }
 //Calendar.prototype.getHTML = function() {
  // return this.html;
@@ -117,8 +112,7 @@ btn.addEventListener('click', function(){
   var selectedYear = document.getElementById('year').value;
   var selectedMonth = document.getElementById('month').value;
   cal = new Calendar(selectedMonth,selectedYear);
-  cal.generateHTML();
-  cal.display();
+  document.write(cal.generateHTML());
 });
 });
 

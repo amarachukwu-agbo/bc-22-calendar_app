@@ -5,13 +5,14 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var expressValidator = require('express-validator');
+var flash = require('connect-flash');
 var mongo = require('mongodb');
-var passportLocal = require('passport-local');
-var fireBase = require('firebase');
-var db = mongoose.connection;
+var passportLocal = require('passport-local').Strategy;
+//mongoose.connect('mongodb://Amara:triumph22@ds143141.mlab.com:43141/calendarapp');
 
-//var routes = require('./routes/index');
-//var users = require('./routes/users');
+/*var User = require('./models/user');
+var db = mongoose.connection;*/
 
 var app = express();
 
@@ -19,7 +20,7 @@ var app = express();
 var port = process.env.PORT || 8080;
 
 //app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
+app.set('view engine', 'jade');
 
 // make express look in the public directory for assets (css/js/img)
 //app.use(express.static(__dirname + '/public'));
@@ -35,17 +36,40 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//app.use('/', routes);
-//app.use('/users', users);
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
 
-/*app.use(function(req,res,next){
-	var err = new Error('Not found');
-	err.status = 404;
-	next(err);
-});*/
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
 
 app.get('/', function(req,res,next){
-	res.render('index.jade',{title:'Welcome'});
+	res.render('home.jade',{title:'Welcome'});
+});
+
+app.post('/', function(req,res,next){
+  res.render('register.jade',{title:'Welcome'});
+});
+
+
+app.get('/home', function(req,res,next){
+  res.render('home.jade',{title:'Welcome'});
 });
 
 app.get('/login', function(req, res) {
@@ -58,11 +82,49 @@ app.get('/register', function(req, res){
 	res.render('register.jade',{title:'Register'});
 });
 
-app.post('/register/send', function(req, res) {
 
-    // ejs render automatically looks in the views folder
-    console.log('test');
+app.post('/register', function(req, res){
+  res.render('home.jade',{title:'Register'});
 });
+
+/*app.post('/register/send', function(req, res) {
+    var firstName = req.body.firstname;
+    var lastName = req.body.lastname;
+    var email = req.body.email;
+    var password = req.body.password;
+    var username = req.body.username;
+  
+
+    req.checkBody('firstname', 'Name field is required').notEmpty();
+    req.checkBody('lastname', 'Name field is required').notEmpty();
+    req.checkBody('email', 'Email is not valid').isEmail();
+    req.checkBody('username', 'Username field is required').notEmpty();
+    req.checkBody('password', 'Password  field is required').notEmpty();
+
+
+    var errors = req.validationErrors();
+    if(errors){
+      res.render('register',{
+        errors:errors
+      });
+    }else{
+      var newUser = new User({
+        firstname:firstName,
+        lastname:lastName,
+        email: email,
+        username:username,
+        password:password
+      });
+
+      User.createUser(newUser, function(err, user){
+        if(err) throw err;
+        console.log(user);
+      });
+
+      res.location('/home');
+      res.redirect('/home');
+    }
+});*/
 
 app.get('/days', function(req, res){
   res.render('days.jade');
@@ -71,56 +133,6 @@ app.get('/days', function(req, res){
 app.get('/years', function(req, res){
   res.render('years.jade',{title:'Register'});
 });
-
-app.get('/months', function(req, res){
-  res.render('months.jade',{title:'Register'});
-})
-
-
-
-
-/*var config = {
-    apiKey: "AIzaSyAMKcjAqmsqkRssHXcvFIe0e66HsAupXOE",
-    authDomain: "my-calendar-project-ce7ab.firebaseapp.com",
-    databaseURL: "https://my-calendar-project-ce7ab.firebaseio.com",
-    projectId: "my-calendar-project-ce7ab",
-    storageBucket: "my-calendar-project-ce7ab.appspot.com",
-    messagingSenderId: "11642640373"
-  };
-  
-  firebase.initializeApp(config);
-  var db = firebase
-
-  firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-  }).catch(function(error) {
-  // An error happened.
-  });
-
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-  // ...
-  });
-
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-  // ...
-  });
-
-  document.getElementById("myBtn").addEventListener("click", function(){
-    var password = document.getElementByName('password').value;
-    var passwordTwo = document.getElementByName('password2').value;
-    var email = document.getElementByName('email').value;
-    var username = document.getElementByName('username').value;
-    var firstName = document.getElementByName('firstname').value;
-    var password = document.getElementByName('lastname').value;
-
-
-});*/
 
 
 app.listen(port, function() {

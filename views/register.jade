@@ -2,15 +2,12 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     title Calendar App
-    // CSS
-    // load bootstrap and our own personal stylesheet
-    link(href='/stylesheets/bootstrap.css', rel='stylesheet')
-    link(rel='stylesheet', href='css/style.css')
+    link(rel='stylesheet', href='stylesheets/style.css')
   body
     h1 #{title}
     p Sign up using the form below
     .container
-        form(action='register/send', method='post')
+        form.form(action='register/send', method='post')
             .form-group
             | First name:
             br
@@ -39,12 +36,6 @@ html(lang='en')
             |   Password:
             br
             input.form-control(type='password', name='password', placeholder='Enter password' required)
-            br
-            br
-            .form-group
-            |   Confirm password:
-            br
-            input.form-control(type='text', name='password2', placeholder='Re-enter password' required)
             br
             br
             input#myBtn(type='submit', value='Sign Up')

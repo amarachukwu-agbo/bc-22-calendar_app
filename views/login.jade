@@ -1,4 +1,18 @@
-<h2></h2><br/>Username:
-<input type="text" name="userName"/><br/><br/>Password:
-<input type="password" name="passWord"/><br/><br/>
-<p>Not signed up yet? Register <a href="/register"> here</a></p>
+doctype html
+html(lang='en')
+  head
+    title Jade
+     link(rel='stylesheet', href='/stylesheets/style.css')
+  body.form
+    h1 Welcome to the Calendar Application
+    h2 Username:
+    input(type='text', name = 'username' placeholder='Username')
+    br
+    h2 Password
+    input(type='password', placeholder='Password')
+    br
+    br
+    p 
+      | Register 
+      a(href='/register') here
+      |  if you don't have an account

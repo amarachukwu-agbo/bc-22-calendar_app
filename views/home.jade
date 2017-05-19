@@ -1,0 +1,21 @@
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Calendar App
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div
+      div.nav-bar
+        ul.nav-bar-list
+          li.list-items
+            a(href='/') Home
+          li.list-items
+            a(href='/years') View Calendar
+          li.list-items.logout
+            a(href='') Log out
+      h1.welcome Welcome To the Calendar Application
+      .container
+        p.inner
+          |View the months and days in any year of your choice. Start
+          a.link(href='/years') here
+      

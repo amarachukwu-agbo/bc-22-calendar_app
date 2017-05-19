@@ -1,35 +1,99 @@
-body    { padding-top:50px; }
-.container .jumbotron    { 
-	border-radius:40px;
-	margin: 0px 0px 10px 0px;
-	color: #FFFFFF;
+body{ 
+	background-color:#894181; 
+ }
+
+ .form{
+	background-color: #FFFFFF;
+	border: 1.5px solid #D8D8D8;
+	border-radius: 5px;
+	margin-left:100px;
+	margin-right: 100px; 
+	padding: 20px 5px 20px 20px;
+	font-family:Arial
+}
+
+.input{
+	border-radius: 1px;
+	padding: 2px;
+	font-family: Arial;
+}
+
+.nav-bar-list{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+ .list-items{
+	float: left;
+	font-family: Arial;
+	font-size: 18px;
+}
+.list-items a{
+	display: block;
+    color: #594F4F;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.link{
+	color: #880E3E;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 
 }
-.nav-bar{
-	color: #FFFFFF;
+.inner{
+	font-family: Arial;
+	font-size:32px;
+	color: #eeeeee;
+	text-align: center;
+}
+.welcome{
+	font-family: Arial;
+	font-size:48px;
+	color: #eeeeee;
+	text-align: center;
+	font-weight: bold;
+	margin: 30px;
+}
+
+.logout{
+	float:right;
+}
+.list-items a:hover{
+	background-color:#880E3E;
 }
 .nav-list{
 	background-color: #0F9D58;
 	margin: 0px 0px 10px 0px;
 }
-.nav-list li{
-	list-style-type: none;
-	display:inline-block;
-	margin:20px;
-	float:left;
-	color:#FFFFFF;
 
+
+.nav-bar{
+	width:100%;
+	background-color: #9DE0AD;
 }
 
-div{
+.float{
 	float:left;
 	margin: 30px;
 }
 
-<style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#bbb;margin:0px auto;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#bbb;color:#594F4F;background-color:#E0FFEB;}
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#bbb;color:#493F3F;background-color:#9DE0AD;}
 .tg .tg-hjji{font-size:24px;text-align:center;vertical-align:top}
 .tg .tg-yw4l{vertical-align:top}
-</style>
+
+#myBtn{
+	margin-top:20px;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #4C70BA;
+}
+
